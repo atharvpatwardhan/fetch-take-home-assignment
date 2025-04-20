@@ -1,0 +1,23 @@
+Training Considerations
+
+1. Entire Network is Frozen: 
+If the entire network is frozen, then the model would be on only inferencing mode. This is ideal when we have already trained/fine-tuned the model.
+No parameters or wieghts would be updated during this. The drawbacks to this are that the model would not perform well on new unseen tasks or domains.
+
+2. Only Transformer is frozen:
+If only the transformer is frozen, the only trainable parts are the output nodes like the ones implemented in task2. We can do this when the 
+transformer is already pre-trained or fine-tuned. The best use case for this method is during tasks which need light adaptation to a new domain.
+This method is faster and prevents overfitting, but it also might not adapt well to the patterns in the data which may give slightly poor performance
+compared to fine-tuning the whole network.
+
+3. Only one task head is frozen:
+If only one task head is frozen, the other task head and the transformer is trainable. We can do this when we are fine-tuning for a specific task.
+Say we feeze task head A and keep task head B and the transformer unfrozen. Then the transformer and task B head get trained on task B specific data
+to improve performance on task B. This is useful in domain adaptation, but it might lead to imbalance in performance of task A and task B.
+
+In case of Transer Learning:
+1. I would choose a model trained on general data (some model like distilbert-base-uncased or bert-base-uncased).
+2. I would freeze most of the base layers and unfreeze the task heads and a few of the end layers. This way. I retain most of the fundamental general data
+and can continue to fine-tune the end layers for better performance and domain-adaptation.
+3. This method works because it enables to model to retain it's fundamental language understanding like grammar and synatx but also allows it to adapt to
+domain specific data. 

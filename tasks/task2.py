@@ -87,7 +87,13 @@ num_epochs = 5
 model.train()
 
 
-# Training Loop
+# Training Loop for Task 4
+
+"""
+I created some hypothetical data for task A and task B in the above code. I assumed two sentence classification taska. One for sentiment analysis and one for domain classificiation.
+In the forward pass, both task nodes share the same base embedding from the transformer and then they have their own linear layers to predict the class.
+I calculate the cross entropy loss for each task and then sum them up to get the total loss for each epoch.
+"""
 
 for epoch in range(num_epochs):
     total_loss = 0
