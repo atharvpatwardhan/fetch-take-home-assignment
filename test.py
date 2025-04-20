@@ -23,6 +23,6 @@ def predict(sentences):
 if __name__ == "__main__":
     input_sentences = sys.argv[1:]
     if not input_sentences:
-        print("Usage: python predict.py 'Sentence 1' 'Sentence 2' ...")
+        print("Usage: python test.py 'Sentence 1' 'Sentence 2' ...")
     else:
         predict(input_sentences)
